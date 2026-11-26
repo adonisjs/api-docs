@@ -15,7 +15,13 @@ for (const name of names) {
   if (!response.ok) throw new Error(`Cannot read ${name} from npm: ${response.status}`)
   const { version, repository } = await response.json()
 
-  const repo = repository.url.replace(/^git\+/, '').replace(/\.git$/, '')
+  /**
+   * npm can give the repository as an SSH URL. The build machine has no SSH
+   * key, so always clone over HTTPS.
+   */
+  const slug = repository.url.match(/github\.com[/:]([^/]+\/[^/]+?)(?:\.git)?$/)?.[1]
+  if (!slug) throw new Error(`Cannot find the GitHub repository of ${name} in "${repository.url}"`)
+  const repo = `https://github.com/${slug}`
   const tag = `v${version}`
   const dir = join('packages', name.split('/')[1])
 
