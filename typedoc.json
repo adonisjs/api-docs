@@ -4,5 +4,6 @@
   "entryPointStrategy": "packages",
   "plugin": ["typedoc-plugin-missing-exports"],
   "entryPoints": ["packages/*"],
+  "readme": "none",
   "out": "docs"
 }
