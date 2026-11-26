@@ -15,13 +15,13 @@ npm run serve
 
 ## Deploy
 
-The `deploy` workflow builds the website and deploys it to Cloudflare Pages. It runs each day, and you can run it by hand from the Actions tab.
+Cloudflare Pages builds and deploys the website on each push to `main`, with these settings:
 
-It needs these settings of the repository:
+- Build command: `npm run clone && npm run build`
+- Build output directory: `docs`
+- Environment variable: `NODE_VERSION` = `24`
 
-- Secret `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with the "Cloudflare Pages: Edit" permission.
-- Secret `CLOUDFLARE_ACCOUNT_ID`: the ID of the Cloudflare account.
-- Variable `CLOUDFLARE_PAGES_PROJECT`: the name of the Cloudflare Pages project of api.adonisjs.com.
+The `rebuild` workflow starts a build each day, so that new releases of the packages show on the website. It calls the deploy hook of the Pages project, in the secret `CLOUDFLARE_DEPLOY_HOOK`. With no secret, it does nothing.
 
 ## Add a package
 

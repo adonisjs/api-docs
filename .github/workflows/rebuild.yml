@@ -1,0 +1,23 @@
+name: rebuild
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start a build on Cloudflare Pages
+        if: ${{ env.CLOUDFLARE_DEPLOY_HOOK != '' }}
+        run: curl -fsS -X POST "$CLOUDFLARE_DEPLOY_HOOK"
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
