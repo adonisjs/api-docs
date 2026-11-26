@@ -15,13 +15,12 @@ npm run serve
 
 ## Deploy
 
-Cloudflare Pages builds and deploys the website on each push to `main`, with these settings:
+The Cloudflare Worker `api-docs` serves the website as static assets (`wrangler.jsonc`). Workers Builds builds and deploys it on each push to `main`, with these build settings:
 
-- Build command: `npm run clone && npm run build`
-- Build output directory: `docs`
-- Environment variable: `NODE_VERSION` = `24`
+- Build command: `npm ci && npm run clone && npm run build`
+- Deploy command: `npx wrangler deploy`
 
-The `rebuild` workflow starts a build each day, so that new releases of the packages show on the website. It calls the deploy hook of the Pages project, in the secret `CLOUDFLARE_DEPLOY_HOOK`. With no secret, it does nothing.
+The `rebuild` workflow starts a build each day, so that new releases of the packages show on the website. It calls the deploy hook of the Worker, in the secret `CLOUDFLARE_DEPLOY_HOOK`. With no secret, it does nothing.
 
 ## Add a package
 
