@@ -1,0 +1,8 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "AdonisJS API",
+  "entryPointStrategy": "packages",
+  "plugin": ["typedoc-plugin-missing-exports"],
+  "entryPoints": ["packages/*"],
+  "out": "docs"
+}

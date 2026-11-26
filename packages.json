@@ -1,0 +1,19 @@
+[
+  "@adonisjs/ace",
+  "@adonisjs/application",
+  "@adonisjs/assembler",
+  "@adonisjs/config",
+  "@adonisjs/core",
+  "@adonisjs/env",
+  "@adonisjs/events",
+  "@adonisjs/fold",
+  "@adonisjs/hash",
+  "@adonisjs/health",
+  "@adonisjs/http-server",
+  "@adonisjs/http-transformers",
+  "@adonisjs/i18n",
+  "@adonisjs/logger",
+  "@adonisjs/redis",
+  "@adonisjs/repl",
+  "@adonisjs/session"
+]

@@ -1,0 +1,17 @@
+{
+  "name": "@adonisjs/api-docs",
+  "private": true,
+  "type": "module",
+  "description": "API reference of the AdonisJS packages, published at https://api.adonisjs.com",
+  "scripts": {
+    "clone": "node scripts/clone.mjs",
+    "build": "typedoc",
+    "serve": "npx http-server docs"
+  },
+  "devDependencies": {
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-missing-exports": "^4.1.4",
+    "typescript": "~5.9.3",
+    "wrangler": "^4.168.0"
+  }
+}
